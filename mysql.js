@@ -36,7 +36,7 @@ app.get('/api/login', function (err, res) {
 })
 
 // 注册接口
-app.post('/api/register', function (req, res) {
+app.get('/api/register', function (req, res) {
     res.setHeader("access-control-allow-origin", "*");
     console.log('----' + req.query.name);
     console.log('----' + req.query.pass);
@@ -49,10 +49,7 @@ app.post('/api/register', function (req, res) {
             console.log('[SELECT ERROR] - ', err.message);
             return;
         }
-        // result内放的就是返回的数据，res是api传数据
-        // 返回的数据需要转换成JSON格式
-        // res.json(result);
-        // console.log(res.json(result));
+        res.json(result);
     });
 })
 var server = app.listen(8081, function () {
